@@ -1,0 +1,339 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Yakdam: Backend systems, automation, infrastructure</title>
+<meta name="description" content="Yakdam: backend systems, automation, and infrastructure for businesses that need software built around how they actually work. Run by Faizan Akram Dar, 10+ years building backend systems.">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='8' fill='%2314181D'/%3E%3Ctext x='32' y='43' font-family='Georgia,serif' font-size='34' fill='%23C98A2B' text-anchor='middle'%3EP%3C/text%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,500;0,9..144,600;1,9..144,400&family=IBM+Plex+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --ink: #14181D;
+    --ink-soft: #1C2229;
+    --paper: #ECE7DA;
+    --paper-dim: rgba(236,231,218,0.64);
+    --paper-faint: rgba(236,231,218,0.42);
+    --saffron: #C98A2B;
+    --brick: #8C3331;
+    --line: rgba(236,231,218,0.14);
+    --line-strong: rgba(236,231,218,0.26);
+    --font-display: 'Fraunces', Georgia, serif;
+    --font-body: 'IBM Plex Sans', -apple-system, 'Segoe UI', sans-serif;
+  }
+
+  *{box-sizing:border-box;}
+  html{scroll-behavior:smooth;}
+  body{
+    margin:0;
+    background:var(--ink);
+    color:var(--paper);
+    font-family:var(--font-body);
+    font-size:17px;
+    line-height:1.65;
+    -webkit-font-smoothing:antialiased;
+  }
+  a{color:var(--saffron); text-decoration:none; border-bottom:1px solid rgba(201,138,43,0.4); transition:border-color .15s ease;}
+  a:hover{border-color:var(--saffron);}
+  a:focus-visible, button:focus-visible{outline:2px solid var(--saffron); outline-offset:3px; border-radius:2px;}
+
+  .wrap{max-width:720px; margin:0 auto; padding:0 28px;}
+
+  .mark{
+    position:fixed; top:0; left:0; right:0; z-index:10;
+    display:flex; justify-content:space-between; align-items:center;
+    padding:22px 28px;
+    font-family:var(--font-display);
+    font-size:1rem;
+    letter-spacing:0.01em;
+    background:linear-gradient(var(--ink) 60%, transparent);
+  }
+  .mark a{border-bottom:none; color:var(--paper);}
+  .mark .tag{color:var(--paper-faint); font-family:var(--font-body); font-size:0.78rem;}
+
+  main{padding-top:96px;}
+
+  .hero{padding:64px 0 48px;}
+  .hero h1{
+    font-family:var(--font-display);
+    font-weight:600;
+    font-size:clamp(2.5rem, 4.2vw + 1.3rem, 4rem);
+    line-height:1.05;
+    letter-spacing:-0.01em;
+    margin:0 0 22px;
+  }
+  .hero p.lede{
+    font-size:1.2rem;
+    line-height:1.6;
+    color:var(--paper-dim);
+    max-width:34ch;
+    margin:0;
+  }
+
+  .ledger{
+    margin-top:48px;
+    border-top:1px solid var(--line-strong);
+    border-bottom:1px solid var(--line-strong);
+    display:grid;
+    grid-template-columns:repeat(3,1fr);
+  }
+  .ledger div{
+    padding:16px 18px;
+    border-left:1px solid var(--line);
+  }
+  .ledger div:first-child{border-left:none; padding-left:0;}
+  .ledger .num{
+    display:block;
+    font-family:var(--font-display);
+    font-size:1.3rem;
+    color:var(--saffron);
+    margin-bottom:2px;
+  }
+  .ledger .label{
+    display:block;
+    font-size:0.82rem;
+    color:var(--paper-dim);
+  }
+
+  section.block{padding:56px 0; border-top:1px solid var(--line);}
+  section.block h2{
+    font-family:var(--font-display);
+    font-weight:500;
+    font-style:italic;
+    font-size:1.5rem;
+    margin:0 0 30px;
+    color:var(--paper);
+  }
+
+  .row{
+    display:flex;
+    gap:28px;
+    padding:22px 0;
+    border-top:1px solid var(--line);
+  }
+  .row:first-of-type{border-top:none;}
+  .row .name{
+    flex:0 0 180px;
+    font-family:var(--font-display);
+    font-size:1.08rem;
+    padding-top:1px;
+  }
+  .row .desc{
+    flex:1;
+    color:var(--paper-dim);
+    font-size:0.98rem;
+  }
+
+  .bg-text{color:var(--paper-dim); max-width:62ch;}
+  .bg-text p{margin:0 0 18px;}
+  .bg-text .origin{
+    margin-top:28px;
+    padding:18px 22px;
+    background:var(--ink-soft);
+    border-left:2px solid var(--brick);
+    font-family:var(--font-display);
+    font-style:italic;
+    font-size:1.02rem;
+    color:var(--paper);
+  }
+  .bg-text .origin span{
+    display:block;
+    margin-top:8px;
+    font-family:var(--font-body);
+    font-style:normal;
+    font-size:0.82rem;
+    color:var(--paper-faint);
+  }
+
+  .stack-list{list-style:none; margin:18px 0 0; padding:0; display:flex; flex-wrap:wrap; gap:10px 10px;}
+  .stack-list li{
+    font-size:0.86rem;
+    color:var(--paper-dim);
+    border:1px solid var(--line-strong);
+    border-radius:3px;
+    padding:5px 11px;
+  }
+
+  .contact p{color:var(--paper-dim); max-width:50ch;}
+  .contact .links{margin-top:32px; display:flex; flex-direction:column; gap:10px;}
+  .contact .links a{font-size:1.02rem; border-bottom:1px solid rgba(201,138,43,0.4);}
+
+  #contact-form{margin-top:28px; max-width:520px; display:flex; flex-direction:column; gap:18px;}
+  #contact-form label{display:flex; flex-direction:column; gap:6px;}
+  #contact-form label span{font-size:0.84rem; color:var(--paper-dim);}
+  #contact-form input, #contact-form textarea{
+    font:inherit; font-size:1rem;
+    color:var(--paper);
+    background:var(--ink-soft);
+    border:1px solid var(--line-strong);
+    border-radius:3px;
+    padding:10px 12px;
+    width:100%;
+  }
+  #contact-form input:focus, #contact-form textarea:focus{outline:none; border-color:var(--saffron);}
+  #contact-form textarea{resize:vertical; min-height:120px;}
+  #contact-form button{
+    align-self:flex-start;
+    font:inherit; font-weight:500; font-size:0.98rem;
+    color:var(--ink);
+    background:var(--saffron);
+    border:none; border-radius:3px;
+    padding:11px 22px;
+    cursor:pointer;
+    transition:opacity .15s ease;
+  }
+  #contact-form button:hover{opacity:0.9;}
+  #form-status{margin:0; font-size:0.9rem; color:var(--paper-dim); min-height:1.4em;}
+  #form-status.ok{color:var(--saffron);}
+  #form-status.error{color:#D4766F;}
+
+  footer{
+    padding:36px 0 56px;
+    border-top:1px solid var(--line);
+    color:var(--paper-faint);
+    font-size:0.82rem;
+  }
+
+  @media (max-width: 640px){
+    .wrap{padding:0 20px;}
+    .mark{padding:18px 20px;}
+    main{padding-top:84px;}
+    .hero{padding:40px 0 36px;}
+    .ledger{grid-template-columns:1fr; }
+    .ledger div{border-left:none; border-top:1px solid var(--line); padding:14px 0;}
+    .ledger div:first-child{border-top:none;}
+    .row{flex-direction:column; gap:6px;}
+    .row .name{flex:none;}
+  }
+
+  @media (prefers-reduced-motion: reduce){
+    html{scroll-behavior:auto;}
+    *{transition:none !important;}
+  }
+</style>
+</head>
+<body>
+
+<header class="mark">
+  <a href="#top">Yakdam</a>
+  <span class="tag">backend systems &amp; automation</span>
+</header>
+
+<main id="top">
+
+  <section class="wrap hero">
+    <h1>Built right, right away.</h1>
+    <p class="lede">Backend systems, automation, and infrastructure for businesses that need software built around how they actually work.</p>
+
+    <div class="ledger">
+      <div><span class="num">10+</span><span class="label">years building backend systems</span></div>
+      <div><span class="num">PHP</span><span class="label">Symfony &amp; MySQL, primarily</span></div>
+      <div><span class="num">NL</span><span class="label">based in Veenendaal</span></div>
+    </div>
+  </section>
+
+  <section class="wrap block">
+    <h2>What I build</h2>
+
+    <div class="row">
+      <div class="name">Backend systems</div>
+      <div class="desc">Custom backend development in PHP/Symfony and MySQL, built around the actual business logic rather than a generic template. Multi-tenant architecture when the business needs it.</div>
+    </div>
+    <div class="row">
+      <div class="name">Automation</div>
+      <div class="desc">Connecting the tools a business already uses so the manual steps in between disappear: webhooks, integrations, scheduled jobs, data pipelines.</div>
+    </div>
+    <div class="row">
+      <div class="name">Infrastructure</div>
+      <div class="desc">Cloud infrastructure with Pulumi, bare-metal configuration with Ansible, deployments, monitoring, and keeping production systems running.</div>
+    </div>
+    <div class="row">
+      <div class="name">Consultancy</div>
+      <div class="desc">Technical advice for businesses working out how to build, extend, or scale a system, before any code gets written.</div>
+    </div>
+
+    <ul class="stack-list">
+      <li>PHP / Symfony</li>
+      <li>MySQL</li>
+      <li>Pulumi</li>
+      <li>Ansible</li>
+      <li>HTMX</li>
+      <li>React / TypeScript</li>
+    </ul>
+  </section>
+
+  <section class="wrap block">
+    <h2>Background</h2>
+    <div class="bg-text">
+      <p>Yakdam is run by Faizan Akram Dar, a backend engineer with 10+ years of experience, most of it spent building a multi-tenant ERP platform for commodity trading. The kind of system where the data has to be right, every time, for every tenant.</p>
+      <p>That background shapes the approach here: software that fits the business it's built for, rather than a template the business has to adapt to.</p>
+      <div class="origin">
+        "Yakdam" means right away, at once, in Kashmiri.
+      </div>
+    </div>
+  </section>
+
+  <section class="wrap block contact">
+    <h2>Get in touch</h2>
+    <p>For backend work, automation, infrastructure, or just a technical second opinion.</p>
+
+    <form id="contact-form" action="https://formspree.io/f/xbgdplwr" method="POST">
+      <label>
+        <span>Name</span>
+        <input type="text" name="name" required autocomplete="name">
+      </label>
+      <label>
+        <span>Email</span>
+        <input type="email" name="email" required autocomplete="email">
+      </label>
+      <label>
+        <span>What do you need?</span>
+        <textarea name="message" rows="5" required></textarea>
+      </label>
+      <input type="text" name="_gotcha" style="display:none" tabindex="-1" autocomplete="off">
+      <button type="submit">Send</button>
+      <p id="form-status" role="status" aria-live="polite"></p>
+    </form>
+
+    <div class="links">
+      <a href="https://github.com/faizanakram99">github.com/faizanakram99</a>
+      <a href="https://linkedin.com/in/faizanakram">linkedin.com/in/faizanakram</a>
+    </div>
+  </section>
+
+</main>
+
+<footer class="wrap">
+  © 2026 Yakdam
+</footer>
+
+<script>
+  (function () {
+    var form = document.getElementById('contact-form');
+    var status = document.getElementById('form-status');
+    if (!form || !window.fetch) return;
+    form.addEventListener('submit', function (e) {
+      e.preventDefault();
+      status.className = '';
+      status.textContent = 'Sending...';
+      fetch(form.action, {
+        method: 'POST',
+        body: new FormData(form),
+        headers: { 'Accept': 'application/json' }
+      }).then(function (r) {
+        if (!r.ok) throw new Error('bad status');
+        form.reset();
+        status.className = 'ok';
+        status.textContent = 'Sent. I will reply by email within a few working days.';
+      }).catch(function () {
+        status.className = 'error';
+        status.textContent = 'Not sent. Check your email address and connection, then try again.';
+      });
+    });
+  })();
+</script>
+
+</body>
+</html>
