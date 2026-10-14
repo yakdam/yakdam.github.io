@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<title>Yakdam: Backend systems, automation, infrastructure</title>
+<title>Yakdam | Built right, right away.</title>
 <meta name="description" content="Yakdam: backend systems, automation, and infrastructure for businesses that need software built around how they actually work. Run by Faizan Akram Dar, 10+ years building backend systems.">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='8' fill='%2314181D'/%3E%3Ctext x='32' y='43' font-family='Georgia,serif' font-size='34' fill='%23C98A2B' text-anchor='middle'%3EP%3C/text%3E%3C/svg%3E">
@@ -63,6 +63,13 @@
     line-height:1.05;
     letter-spacing:-0.01em;
     margin:0 0 22px;
+  }
+  .hero p.meaning{
+    font-family:var(--font-display);
+    font-style:italic;
+    font-size:1.02rem;
+    color:var(--paper-faint);
+    margin:-10px 0 24px;
   }
   .hero p.lede{
     font-size:1.2rem;
@@ -128,24 +135,6 @@
 
   .bg-text{color:var(--paper-dim); max-width:62ch;}
   .bg-text p{margin:0 0 18px;}
-  .bg-text .origin{
-    margin-top:28px;
-    padding:18px 22px;
-    background:var(--ink-soft);
-    border-left:2px solid var(--brick);
-    font-family:var(--font-display);
-    font-style:italic;
-    font-size:1.02rem;
-    color:var(--paper);
-  }
-  .bg-text .origin span{
-    display:block;
-    margin-top:8px;
-    font-family:var(--font-body);
-    font-style:normal;
-    font-size:0.82rem;
-    color:var(--paper-faint);
-  }
 
   .stack-list{list-style:none; margin:18px 0 0; padding:0; display:flex; flex-wrap:wrap; gap:10px 10px;}
   .stack-list li{
@@ -225,6 +214,7 @@
 
   <section class="wrap hero">
     <h1>Built right, right away.</h1>
+    <p class="meaning">Yakdam. Right away, at once, in Kashmiri.</p>
     <p class="lede">Backend systems, automation, and infrastructure for businesses that need software built around how they actually work.</p>
 
     <div class="ledger">
@@ -269,9 +259,6 @@
     <div class="bg-text">
       <p>Yakdam is run by Faizan Akram Dar, a backend engineer with 10+ years of experience, most of it spent building a multi-tenant ERP platform for commodity trading. The kind of system where the data has to be right, every time, for every tenant.</p>
       <p>That background shapes the approach here: software that fits the business it's built for, rather than a template the business has to adapt to.</p>
-      <div class="origin">
-        "Yakdam" means right away, at once, in Kashmiri.
-      </div>
     </div>
   </section>
 
