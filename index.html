@@ -71,6 +71,13 @@
     color:var(--paper-faint);
     margin:-10px 0 24px;
   }
+  .hero p.facts{
+    margin:26px 0 0;
+    padding-top:18px;
+    border-top:1px solid var(--line-strong);
+    font-size:0.9rem;
+    color:var(--paper-dim);
+  }
   .hero p.lede{
     font-size:1.2rem;
     line-height:1.6;
@@ -79,30 +86,6 @@
     margin:0;
   }
 
-  .ledger{
-    margin-top:48px;
-    border-top:1px solid var(--line-strong);
-    border-bottom:1px solid var(--line-strong);
-    display:grid;
-    grid-template-columns:repeat(3,1fr);
-  }
-  .ledger div{
-    padding:16px 18px;
-    border-left:1px solid var(--line);
-  }
-  .ledger div:first-child{border-left:none; padding-left:0;}
-  .ledger .num{
-    display:block;
-    font-family:var(--font-display);
-    font-size:1.3rem;
-    color:var(--saffron);
-    margin-bottom:2px;
-  }
-  .ledger .label{
-    display:block;
-    font-size:0.82rem;
-    color:var(--paper-dim);
-  }
 
   section.block{padding:56px 0; border-top:1px solid var(--line);}
   section.block h2{
@@ -136,18 +119,8 @@
   .bg-text{color:var(--paper-dim); max-width:62ch;}
   .bg-text p{margin:0 0 18px;}
 
-  .stack-list{list-style:none; margin:18px 0 0; padding:0; display:flex; flex-wrap:wrap; gap:10px 10px;}
-  .stack-list li{
-    font-size:0.86rem;
-    color:var(--paper-dim);
-    border:1px solid var(--line-strong);
-    border-radius:3px;
-    padding:5px 11px;
-  }
 
   .contact p{color:var(--paper-dim); max-width:50ch;}
-  .contact .links{margin-top:32px; display:flex; flex-direction:column; gap:10px;}
-  .contact .links a{font-size:1.02rem; border-bottom:1px solid rgba(201,138,43,0.4);}
 
   #contact-form{margin-top:28px; max-width:520px; display:flex; flex-direction:column; gap:18px;}
   #contact-form label{display:flex; flex-direction:column; gap:6px;}
@@ -190,9 +163,6 @@
     .mark{padding:18px 20px;}
     main{padding-top:84px;}
     .hero{padding:40px 0 36px;}
-    .ledger{grid-template-columns:1fr; }
-    .ledger div{border-left:none; border-top:1px solid var(--line); padding:14px 0;}
-    .ledger div:first-child{border-top:none;}
     .row{flex-direction:column; gap:6px;}
     .row .name{flex:none;}
   }
@@ -214,14 +184,10 @@
 
   <section class="wrap hero">
     <h1>Built right, right away.</h1>
-    <p class="meaning">Yakdam. Right away, at once, in Kashmiri.</p>
+    <p class="meaning">"Yakdam" means right away, at once, in Kashmiri.</p>
     <p class="lede">Backend systems, automation, and infrastructure for businesses that need software built around how they actually work.</p>
 
-    <div class="ledger">
-      <div><span class="num">10+</span><span class="label">years building backend systems</span></div>
-      <div><span class="num">PHP</span><span class="label">Symfony &amp; MySQL, primarily</span></div>
-      <div><span class="num">NL</span><span class="label">based in Veenendaal</span></div>
-    </div>
+    <p class="facts">10+ years of backend work. PHP, Symfony, MySQL. Based in Veenendaal, the Netherlands.</p>
   </section>
 
   <section class="wrap block">
@@ -229,7 +195,7 @@
 
     <div class="row">
       <div class="name">Backend systems</div>
-      <div class="desc">Custom backend development in PHP/Symfony and MySQL, built around the actual business logic rather than a generic template. Multi-tenant architecture when the business needs it.</div>
+      <div class="desc">Custom backend development in PHP/Symfony and MySQL. Multi-tenant architecture when the business needs it.</div>
     </div>
     <div class="row">
       <div class="name">Automation</div>
@@ -243,22 +209,12 @@
       <div class="name">Consultancy</div>
       <div class="desc">Technical advice for businesses working out how to build, extend, or scale a system, before any code gets written.</div>
     </div>
-
-    <ul class="stack-list">
-      <li>PHP / Symfony</li>
-      <li>MySQL</li>
-      <li>Pulumi</li>
-      <li>Ansible</li>
-      <li>HTMX</li>
-      <li>React / TypeScript</li>
-    </ul>
   </section>
 
   <section class="wrap block">
     <h2>Background</h2>
     <div class="bg-text">
-      <p>Yakdam is run by Faizan Akram Dar, a backend engineer with 10+ years of experience, most of it spent building a multi-tenant ERP platform for commodity trading. The kind of system where the data has to be right, every time, for every tenant.</p>
-      <p>That background shapes the approach here: software that fits the business it's built for, rather than a template the business has to adapt to.</p>
+      <p>Yakdam is run by <a href="https://faizanakr.am">Faizan Akram Dar</a>. Most of my work so far has been on a multi-tenant ERP platform, the kind of system where the data has to be right, every time, for every tenant. That's the standard I bring to everything here.</p>
     </div>
   </section>
 
@@ -283,11 +239,6 @@
       <button type="submit">Send</button>
       <p id="form-status" role="status" aria-live="polite"></p>
     </form>
-
-    <div class="links">
-      <a href="https://github.com/faizanakram99">github.com/faizanakram99</a>
-      <a href="https://linkedin.com/in/faizanakram">linkedin.com/in/faizanakram</a>
-    </div>
   </section>
 
 </main>
