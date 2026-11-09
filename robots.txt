@@ -1,0 +1,22 @@
+# Search engines may crawl everything; legal.html carries a noindex tag
+# so they will drop it from results.
+User-agent: *
+Allow: /
+
+# AI crawlers and agents: keep away from the page with the address.
+User-agent: GPTBot
+User-agent: ChatGPT-User
+User-agent: OAI-SearchBot
+User-agent: ClaudeBot
+User-agent: Claude-User
+User-agent: Claude-SearchBot
+User-agent: anthropic-ai
+User-agent: PerplexityBot
+User-agent: Perplexity-User
+User-agent: Google-Extended
+User-agent: Applebot-Extended
+User-agent: CCBot
+User-agent: Bytespider
+User-agent: meta-externalagent
+User-agent: Amazonbot
+Disallow: /legal.html
